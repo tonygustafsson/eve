@@ -1,24 +1,96 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+body {
+  line-height: 130%;
   text-align: center;
+  font-family: 'Roboto Slab', serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+img {
+	border: none;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#main {
+	width: 80%;
+	margin: 0 10%;
+	text-align: center;
 }
 
-.App-intro {
-  font-size: large;
+h1 {
+	text-align: center;
+  letter-spacing: 6px;
+  font-size: 300%;
+  padding: .5em 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+h1 a {
+	display: block;
+	padding: 1em 0;
+	font-size: 200%;
+	text-decoration: none;
+	color: #000;
+	font-family: 'Roboto Slab', serif;
+}
+
+p {
+	font-family: 'Roboto Slab', serif;
+	font-size: 120%;
+	text-align: left;
+	padding: 0 20%;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #eee;
+	border-top: 1px #aaa solid;
+	opacity: 0.8;
+}
+
+footer p {
+	text-align: right;
+	padding: 0;
+	font-size: 80%;
+}
+
+footer p a {
+	color: black;
+	letter-spacing: 2px;
+	text-decoration: none;
+	margin-right: 1.5em;
+}
+
+@media screen and (max-width: 960px) {
+	#main {
+		width: 100%;
+		margin: 0;
+	}
+	
+	.bot-img {
+		max-width: 100%;
+	}
+	
+	.fork-me img {
+		display: none;
+	}
+	
+	input[type=text] {
+		width: 100%;
+		box-sizing: border-box;
+		margin-bottom: .5em;
+	}
+	
+	h1 a {
+		padding-top: .5em;
+	}
+	
+	p {
+		padding: 0;
+	}
+	
+	footer {
+		display: none;
+	}
 }
