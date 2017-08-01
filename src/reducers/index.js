@@ -1,14 +1,9 @@
-const initState = {
-    loading: true
-};
+import { combineReducers } from 'redux';
 
-const reducer = (state = initState, action) => {
-  switch (action.type) {
-    case 'INTERFACE_LOADED':
-      return { ...state, loading: false };
-    default:
-      return state;
-  }
-}
+import eveReducer from './eveReducer';
 
-export default reducer;
+const reducers = combineReducers({
+  eve: eveReducer
+})
+
+export default reducers

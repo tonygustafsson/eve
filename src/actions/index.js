@@ -1,5 +1,1 @@
-export const interfaceLoaded = () => {
-    return {
-        type: 'INTERFACE_LOADED'
-    };
-};
+export * from './eveActions';

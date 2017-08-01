@@ -22,14 +22,6 @@ input[type=text] {
 	padding: 0 0.5em;
 }
 
-input[type=submit], input[type=button] {
-	width: 100px;
-	height: 38px;
-	font-family: 'Lucida grande', Helvetica, sans-serif;
-	font-size: 120%;
-	cursor: pointer;
-}
-
 .greyed {
 	color: #888;
 }

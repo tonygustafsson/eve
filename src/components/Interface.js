@@ -1,23 +1,21 @@
 import React from 'react';
 
-const Interface = ({ loading }) => {
+const Interface = ({ loading, speak, currentPhrase, type, currentTime }) => {
     return (
         <div className="interface">
             <a href="http://www.tonyg.se/projects/sarabot/" title="Gå till startsidan">
-                <img src="http://www.tonyg.se/projects/sarabot/assets/images/bot.jpg" class="bot-img" alt="Sarabot" />
+                <img src="http://www.tonyg.se/projects/sarabot/assets/images/bot.jpg" className="bot-img" alt="Sarabot" />
             </a>
 
-            <form method="post" id="dialog_form" class="dialog-form" action="http://www.tonyg.se/projects/sarabot/bot/speak">
-                <input id="input_field" class="input-field" type="text" name="input" />
-                <input type="submit" value="Say" class="btn-submit" />
-                <input type="button" value="Clear" class="btn-clear" id="clear" data-url="http://www.tonyg.se/projects/sarabot/bot/forget" />
+            <form className="dialog-form" onSubmit={e => { e.preventDefault(); speak(currentPhrase) }}>
+                <input type="text" className="input-field"  value={currentPhrase} onChange={e => { type(e.target.value); }} />
+                <button type="submit" className="btn-submit">Say</button>
+                <button type="button" className="btn-clear" id="clear">Clear</button>
             </form>
 
-            <div id="dialog" class="dialog">
-                <p>&#60;18:35:04&#62; eve: Hi, what's your name?</p>
+            <div id="dialog" className="dialog">
+                <p>&#60;{ currentTime }&#62; eve: Hi, what's your name?</p>
             </div>
-
-
         </div>
     );
 }
