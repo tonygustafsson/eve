@@ -1,30 +1,20 @@
-const currentTime = () => {
-    let date = new Date(),
-        hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours(),
-        minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes(),
-        seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
-        
-    return hours + ':' + minutes + ':' + seconds;
-}
-
 const initState = {
+    dialog: [],
     loading: true,
     saidLast: '',
-    currentPhrase: '',
-    currentTime: currentTime()
 };
 
 const reducer = (state = initState, action) => {
-  switch (action.type) {
-    case 'INTERFACE_LOADED':
-      return { ...state, loading: false };
-    case 'TYPE':
-      return { ...state, currentPhrase: action.payload };
-    case 'SPEAK':
-      return { ...state, saidLast: action.payload };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case 'INTERFACE_LOADED':
+            return { ...state, loading: false };
+        case 'SPEAK':
+            let dialog = Object.create(state.dialog);
+            dialog.unshift({'time': action.time, 'sentence': action.payload});
+            return { ...state, dialog: dialog, saidLast: action.payload };
+        default:
+            return state;
+    }
 }
 
 export default reducer;

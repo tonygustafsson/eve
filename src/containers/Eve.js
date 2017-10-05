@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { speak, type } from '../actions';
+import { speak } from '../actions';
 import Interface from '../components/Interface';
 import './Eve.css';
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    dialog: state.eve.dialog,
     loading: state.eve.loading,
-    currentPhrase: state.eve.currentPhrase,
     currentTime: state.eve.currentTime
   };
 };
@@ -15,8 +15,7 @@ export const InterfaceComponent = connect(
   mapStateToProps,
   (dispatch) => {
     return {
-      type: (typed) => dispatch(type(typed)),
-      speak: (said) => dispatch(speak(said))
+      speak: (said, time) => dispatch(speak(said, time)),
     };
   }
 )(Interface);

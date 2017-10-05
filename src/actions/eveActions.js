@@ -1,19 +1,13 @@
 export const interfaceLoaded = () => {
     return {
-        type: 'INTERFACE_LOADED'
+        type: 'INTERFACE_LOADED',
     };
 };
 
-export const type = (typed) => {
-    return {
-        type: 'TYPE',
-        payload: typed
-    };
-};
-
-export const speak = (said) => {
+export const speak = (said, time) => {
     return {
         type: 'SPEAK',
-        payload: said
+        payload: said,
+        time: time,
     };
 };
