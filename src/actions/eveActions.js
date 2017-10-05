@@ -1,3 +1,5 @@
+import { getAnswer } from  './brain';
+
 export const interfaceLoaded = () => {
     return {
         type: 'INTERFACE_LOADED',
