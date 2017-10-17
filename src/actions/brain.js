@@ -5,5 +5,6 @@ export const getAnswer = (input) => {
         return 'Hello dear.';        
     }
 
-    return 'I did not catch that.';
+    let sentencer = require('sentencer');
+    return sentencer.make("Tell me about {{ noun }}");
 };
