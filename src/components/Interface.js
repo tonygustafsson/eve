@@ -21,7 +21,7 @@ export default class Interface extends React.Component {
     speak(e) {
         e.preventDefault();
 
-        if (this.state.currentPhrase) return;
+        if (this.state.currentPhrase.length < 1) return;
 
         this.props.speak(this.state.currentPhrase, this.getCurrentTime());
         this.setState({currentPhrase: ''});
@@ -49,7 +49,9 @@ export default class Interface extends React.Component {
                 </form>
 
                 <div id="dialog" className="dialog">
-                    <p>&#60;{this.getCurrentTime()}&#62; eve: Hi, what's your name?</p>
+                    { typeof this.props.dialog === "undefined" &&
+                        <p>&#60;{this.getCurrentTime()}&#62; eve: Hi, what's your name?</p>                    
+                    }
 
                     {typeof this.props.dialog !== "undefined" && this.props.dialog.map((said) => {
                         return (
@@ -60,7 +62,7 @@ export default class Interface extends React.Component {
                                 </p>
                             </div>
                         );
-                    })};
+                    })}
             </div>
             </div>
         );

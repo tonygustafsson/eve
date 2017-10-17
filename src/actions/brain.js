@@ -1,3 +1,9 @@
 export const getAnswer = (input) => {
-    return 'hoho';
+    input = input.toLowerCase();
+
+    if (input.startsWith('hi') || input.startsWith('hello')) {
+        return 'Hello dear.';        
+    }
+
+    return 'I did not catch that.';
 };
