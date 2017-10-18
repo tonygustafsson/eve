@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     dialog: state.eve.dialog,
     loading: state.eve.loading,
-    currentTime: state.eve.currentTime
+    currentTime: state.eve.currentTime,
+    user: state.eve.user,
   };
 };
 
@@ -15,7 +16,7 @@ export const InterfaceComponent = connect(
   mapStateToProps,
   (dispatch) => {
     return {
-      speak: (said, time) => dispatch(speak(said, time)),
+      speak: (said, answer, time) => dispatch(speak(said, answer, time)),
     };
   }
 )(Interface);

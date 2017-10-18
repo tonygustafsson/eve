@@ -1,16 +1,14 @@
-import { getAnswer } from  './brain';
-
 export const interfaceLoaded = () => {
     return {
         type: 'INTERFACE_LOADED',
     };
 };
 
-export const speak = (said, time) => {
+export const speak = (said, answer, time) => {
     return {
         type: 'SPEAK',
         payload: said,
-        answer: getAnswer(said),
+        answer: answer,
         time: time,
     };
 };

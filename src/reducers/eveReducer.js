@@ -2,8 +2,11 @@ const initState = {
     dialog: [],
     loading: true,
     saidLast: '',
-    userName: null,
     listeningFor: 'name',
+    user: {
+        name: null,
+        age: null,
+    }
 };
 
 const reducer = (state = initState, action) => {
@@ -17,7 +20,7 @@ const reducer = (state = initState, action) => {
                 let answer = 'Nice to meet you, ' + action.payload;
 
                 dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': answer});                
-                return { ...state, dialog: dialog, userName: action.payload, listeningFor: null, 'answer': answer };
+                return { ...state, dialog: dialog, user: { name: action.payload }, listeningFor: null, 'answer': answer };
             }
 
             dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': action.answer});

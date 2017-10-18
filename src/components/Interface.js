@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAnswer } from  '../Brain';
 
 export default class Interface extends React.Component {
     constructor(props) {
@@ -23,7 +24,11 @@ export default class Interface extends React.Component {
 
         if (this.state.currentPhrase.length < 1) return;
 
-        this.props.speak(this.state.currentPhrase, this.getCurrentTime());
+        let said = this.state.currentPhrase,
+            answer = getAnswer(this.state.currentPhrase, this.props.user),
+            time = this.getCurrentTime();
+
+        this.props.speak(said, answer, time);
         this.setState({currentPhrase: ''});
 
         this.input.focus();
