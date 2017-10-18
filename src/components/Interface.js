@@ -49,7 +49,7 @@ export default class Interface extends React.Component {
                 </form>
 
                 <div id="dialog" className="dialog">
-                    { typeof this.props.dialog === "undefined" || this.props.dialog.length < 1 &&
+                    { (typeof this.props.dialog === "undefined" || this.props.dialog.length < 1) &&
                         <p>&#60;{this.getCurrentTime()}&#62; eve: Hi, what's your name?</p>                    
                     }
 

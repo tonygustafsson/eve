@@ -1,11 +1,11 @@
 const answers = {
     hello: [
-        'Hi there',
+        'Hi there {{name}}',
         'Hello :)',
         'Gday mate',
     ],
     goodbye: [
-        'See you later',
+        'See you later {{name}}',
         'Goodbye you...',
         'See ya',
     ]
@@ -13,9 +13,12 @@ const answers = {
 
 const getRandomAnswer = (phrase) => {
     let availableAnswers = answers[phrase],
-        randomIndex = Math.floor(Math.random() * availableAnswers.length);
+        randomIndex = Math.floor(Math.random() * availableAnswers.length),
+        answer = availableAnswers[randomIndex];
 
-    return availableAnswers[randomIndex];
+    answer = answer.replace("{{name}}", "Tony");
+
+    return answer;
 };
 
 export const getAnswer = (input) => {
