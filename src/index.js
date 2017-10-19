@@ -14,12 +14,15 @@ const myCompose = process.env.NODE_ENV === 'development' && window.__REDUX_DEVTO
     ? compose(applyMiddleware(thunk, LocalStorageMiddleware, BrainMiddleware), window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__())
     : compose(applyMiddleware(thunk, LocalStorageMiddleware, BrainMiddleware));
 
+const currentStorage = window.localStorage.getItem('eve'),
+      currentStorageObject = currentStorage ? JSON.parse(currentStorage) : {};
+
 const store = createStore(
     reducers,
-    {},
+    currentStorageObject,
     myCompose
 );
-
+    
 ReactDOM.render(
     <Provider store={store}>
         <App store={store} />

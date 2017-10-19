@@ -1,10 +1,10 @@
-import {  } from '../actions';
-
 export const LocalStorageMiddleware = store => next => action => {
-    if (typeof window.localStorage === 'undefined') return next(action);
-
     switch (action.type) {
         default:
+            let state = store.getState();
+
+            window.localStorage.setItem('eve', JSON.stringify(state));
+
             return next(action);
     }
 };
