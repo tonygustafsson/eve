@@ -44,6 +44,10 @@ export default class Interface extends React.Component {
         });
     }
 
+    clear() {
+        this.props.clear();
+    }
+
     render() {
         return (
             <div className="interface">
@@ -54,7 +58,7 @@ export default class Interface extends React.Component {
                 <form className="dialog-form" onSubmit={e => { this.speak(e) }}>
                     <input type="text" ref={(input) => { this.input = input; }} className="input-field" value={this.state.currentPhrase} onChange={e => { this.changePhrase(e.target.value); }} />
                     <button type="submit" className="btn-submit">Say</button>
-                    <button type="button" className="btn-clear" id="clear">Clear</button>
+                    <button type="button" className="btn-clear" onClick={() => { this.clear() }}>Clear</button>
                 </form>
 
                 <div id="dialog" className="dialog">

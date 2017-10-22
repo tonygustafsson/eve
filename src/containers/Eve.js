@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { speak } from '../actions';
+import { speak, clear } from '../actions';
 import Interface from '../components/Interface';
 import './Eve.css';
 
@@ -17,6 +17,7 @@ export const InterfaceComponent = connect(
   (dispatch) => {
     return {
       speak: (said, answer, time) => dispatch(speak(said, answer, time)),
+      clear: () => dispatch(clear()),
     };
   }
 )(Interface);

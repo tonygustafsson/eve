@@ -39,6 +39,8 @@ const reducer = (state = initState, action) => {
             if (dialog.length > 10) dialog.pop();
 
             return { ...state, dialog: dialog, saidLast: action.payload };
+        case 'CLEAR':
+            return initState;
         default:
             return state;
     }

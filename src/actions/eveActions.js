@@ -12,3 +12,9 @@ export const speak = (said, answer, time) => {
         time: time,
     };
 };
+
+export const clear = () => {
+    return {
+        type: 'CLEAR',
+    };
+};
