@@ -62,9 +62,9 @@ export default class Interface extends React.Component {
                         <p>&#60;{this.getCurrentTime()}&#62; eve: Hi, what's your name?</p>                    
                     }
 
-                    { typeof this.props.dialog !== "undefined" && this.props.dialog.map((said) => {
+                    { typeof this.props.dialog !== "undefined" && this.props.dialog.map((said, index) => {
                         return (
-                            <div key={said.time}>
+                            <div key={index}>
                                 <p>
                                     <span>&#60;{said.time}&#62; {said.sentence}</span><br />
                                     <span>&#60;{said.time}&#62; {said.answer}</span>
