@@ -36,7 +36,7 @@ const reducer = (state = initState, action) => {
                 answer: action.answer,
             });
 
-            if (dialog.length > 5) dialog.pop();
+            if (dialog.length > 10) dialog.pop();
 
             return { ...state, dialog: dialog, saidLast: action.payload };
         default:
