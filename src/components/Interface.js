@@ -19,6 +19,10 @@ export default class Interface extends React.Component {
         return hours + ':' + minutes + ':' + seconds;
     }
 
+    componentDidMount() {
+        this.input.focus();        
+    }
+
     speak(e) {
         e.preventDefault();
 
