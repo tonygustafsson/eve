@@ -19,15 +19,26 @@ const reducer = (state = initState, action) => {
             if (state.listeningFor === 'name') {
                 let answer = 'Nice to meet you, ' + action.payload;
 
-                dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': answer});                
-                return { ...state, dialog: dialog, user: { name: action.payload }, listeningFor: null, 'answer': answer };
+                dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': answer});
+
+                return {
+                    ...state,
+                    dialog: dialog,
+                    user: { name: action.payload },
+                    listeningFor: null,
+                    answer: answer,
+                };
             }
 
-            dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': action.answer});
+            dialog.unshift({
+                time: action.time,
+                sentence: action.payload,
+                answer: action.answer,
+            });
+
+            if (dialog.length > 5) dialog.pop();
+
             return { ...state, dialog: dialog, saidLast: action.payload };
-        case 'LOCAL_STORAGE_TO_STATE':
-            console.log(action.payload);
-            return action.payload;
         default:
             return state;
     }
