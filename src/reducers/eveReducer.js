@@ -30,6 +30,15 @@ const reducer = (state = initState, action) => {
                 };
             }
 
+            if (action.payload.startsWith('my name is ') && action.payload.split(' ').length > 3) {
+                let name = action.payload.split(' ')[3].charAt(0).toUpperCase();
+
+                return {
+                    ...state,
+                    user: { name: name },
+                }
+            }
+
             dialog.unshift({
                 time: action.time,
                 sentence: action.payload,
