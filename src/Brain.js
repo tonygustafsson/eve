@@ -20,6 +20,12 @@ const answers = {
         '{{extraInfo}}',
         'It is {{extraInfo}} of course...',
     ],
+    time: [
+        'The time is {{extraInfo}}, {{name}}',
+        '{{extraInfo}}',
+        'It\'s precisely {{extraInfo}}',
+        'How would I know?',
+    ],
 };
 
 const getRandomAnswer = (phrase, user, extraInfo) => {
@@ -72,6 +78,13 @@ export const getAnswer = (input, user) => {
 
     if (input.startsWith('hi') || input.startsWith('hello')) {
         return getRandomAnswer('hello', user);       
+    }
+
+    if (input.includes('clock') || input.includes('time')) {
+        let date = new Date(),
+            extraInfo = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+        return getRandomAnswer('time', user, extraInfo);       
     }
 
     if (input.startsWith('goodbye') || input.startsWith('bye')) {
