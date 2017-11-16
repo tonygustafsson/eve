@@ -14,26 +14,38 @@ const answers = {
         '{{name}} of course',
         'Say my name, {{name}}!',
     ],
+    math: [
+        'I think it\'s {{extraInfo}}',
+        'Well, {{name}}, It\'s probably {{extraInfo}}.',
+        '{{extraInfo}}',
+        'It is {{extraInfo}} of course...',
+    ],
 };
 
-const getRandomAnswer = (phrase, user) => {
+const getRandomAnswer = (phrase, user, extraInfo) => {
     let availableAnswers = answers[phrase],
         randomIndex = Math.floor(Math.random() * availableAnswers.length),
         answer = availableAnswers[randomIndex];
 
     answer = answer.replace("{{name}}", user.name);
-
+    answer = answer.replace("{{extraInfo}}", extraInfo);
+        
     return answer;
 };
 
 export const getAnswer = (input, user) => {
     input = input.toLowerCase().replace("/?!.", "");
 
-    let isQuestion = input.includes('?');
-        ///isMathProblem = input.match(new RegExp('\d+\ ?(\+|\-|\*|\/)\ ?\d+)/g')); // Not working yet
+    let isQuestion = input.includes('?'),
+        isMathProblem = new RegExp('\\d+\\ ?(\\+|\\-|\\*|\\/) ?\\d+').test(input);
+
+    if (isMathProblem) {
+        let answer = eval(input); // TODO: Fix
+
+        return getRandomAnswer('math', user, answer);
+    }
 
     if (input.includes('my name is ')) {
-        debugger;
         return getRandomAnswer('hello', user);
     }
 
