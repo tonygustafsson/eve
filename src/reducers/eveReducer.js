@@ -14,7 +14,8 @@ const reducer = (state = initState, action) => {
         case 'INTERFACE_LOADED':
             return { ...state, loading: false };
         case 'SPEAK':
-            let dialog = state.dialog.slice(); 
+            let dialog = state.dialog.slice(),
+                said = action.payload.toLowerCase();
 
             if (state.listeningFor === 'name') {
                 let answer = 'Nice to meet you, ' + action.payload;
@@ -30,12 +31,12 @@ const reducer = (state = initState, action) => {
                 };
             }
 
-            if (action.payload.startsWith('my name is ') && action.payload.split(' ').length > 3) {
-                let name = action.payload.split(' ')[3].charAt(0).toUpperCase();
+            if (said.startsWith('my name is ') && said.split(' ').length > 3) {
+                let name = action.payload.split(' ')[3];
 
                 return {
                     ...state,
-                    user: { name: name },
+                    user: { ...state.user, name: name },
                 }
             }
 
