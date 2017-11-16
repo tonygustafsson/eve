@@ -40,7 +40,28 @@ export const getAnswer = (input, user) => {
         isMathProblem = new RegExp('\\d+\\ ?(\\+|\\-|\\*|\\/) ?\\d+').test(input);
 
     if (isMathProblem) {
-        let answer = eval(input); // TODO: Fix
+        let numbers = input.match(/\d+/g).map(Number),
+            mathType = input.match(/(\+|\-|\*|\/)/g)[0],
+            answer = 0;
+
+        switch (mathType) {
+            case '+': {
+                answer = numbers[0] + numbers[1];
+                break;
+            }
+            case '-': {
+                answer = numbers[0] - numbers[1];
+                break;
+            }
+            case '*': {
+                answer = numbers[0] * numbers[1];
+                break;
+            }
+            case '/': {
+                answer = numbers[0] / numbers[1];
+                break;
+            }
+        }
 
         return getRandomAnswer('math', user, answer);
     }
