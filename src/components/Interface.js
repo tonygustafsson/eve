@@ -48,6 +48,14 @@ export default class Interface extends React.Component {
         this.props.clear();
     }
 
+    getHistory(e) {
+        if (e.nativeEvent.key !== "ArrowUp") return;
+
+        var lastSaid = this.props.dialog[0].sentence;
+        this.setState({currentPhrase: lastSaid});
+        //e.target.setSelectionRange(this.state.currentPhrase.length, 0);
+    }
+
     render() {
         return (
             <div className="interface">
@@ -56,7 +64,7 @@ export default class Interface extends React.Component {
                 </a>
 
                 <form className="dialog-form" onSubmit={e => { this.speak(e) }}>
-                    <input type="text" ref={(input) => { this.input = input; }} className="input-field" value={this.state.currentPhrase} onChange={e => { this.changePhrase(e.target.value); }} />
+                    <input type="text" ref={(input) => { this.input = input; }} className="input-field" value={this.state.currentPhrase} onKeyDown={e => { this.getHistory(e) }} onChange={e => { this.changePhrase(e.target.value); }} />
                     <button type="submit" className="btn-submit">Say</button>
                     <button type="button" className="btn-clear" onClick={() => { this.clear() }}>Clear</button>
                 </form>
