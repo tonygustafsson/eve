@@ -26,6 +26,30 @@ const answers = {
         'It\'s precisely {{extraInfo}}',
         'How would I know?',
     ],
+    omg: [
+        'I know, right?',
+        ':o!!',
+        'It\'s weird, right?',
+        'OMG indeed, {{name}}',
+    ],
+    your: [
+        'Is it? Really?',
+        'Do you really think so, {{name}}?',
+        'Mine? Noooo? :-o',
+        'Really?',
+    ],
+    you_are: [
+        'Am I? I think so too...',
+        '{{name}}, {{name}}, {{name}}... You are so wrong!',
+        'Me? Noooo?',
+        'OK, and you are?',
+    ],
+    am_i: [
+        'Yes. Yes, you are.',
+        'Very much so.',
+        'You are, yes.',
+        'Of course.',
+    ],
 };
 
 const getRandomAnswer = (phrase, user, extraInfo) => {
@@ -93,6 +117,22 @@ export const getAnswer = (input, user) => {
 
     if (input.includes('what') && input.includes('name')) {
         return getRandomAnswer('whats_my_name', user);
+    }
+
+    if (input.startsWith('omg') || input.startsWith('oh my god')) {
+        return getRandomAnswer('omg', user);       
+    }
+
+    if (input.startsWith('your') || input.startsWith('your')) {
+        return getRandomAnswer('your', user);       
+    }
+
+    if (input.startsWith('you are') || input.startsWith('you\'re')) {
+        return getRandomAnswer('you_are', user);       
+    }
+
+    if (input.startsWith('am i')) {
+        return getRandomAnswer('am_i', user);       
     }
 
     let sentencer = require('sentencer');
