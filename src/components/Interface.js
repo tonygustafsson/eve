@@ -75,11 +75,14 @@ export default class Interface extends React.Component {
                     }
 
                     { typeof this.props.dialog !== "undefined" && this.props.dialog.map((said, index) => {
+                        let answer = said.answer.replace(/{{imageUrl=(.*)}}/g, "<br /><img src='$1' />");
+                        answer = answer.replace(/{{imageCategory=(.*)}}/g, "$1");
+
                         return (
                             <div key={index}>
                                 <p>
                                     <span>&#60;{said.time}&#62; {said.sentence}</span><br />
-                                    <span>&#60;{said.time}&#62; {said.answer}</span>
+                                    <span>&#60;{said.time}&#62; <span dangerouslySetInnerHTML={ { __html: answer } }></span></span>
                                 </p>
                             </div>
                         );

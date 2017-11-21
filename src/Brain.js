@@ -63,6 +63,14 @@ const getRandomAnswer = (phrase, user, extraInfo) => {
     return answer;
 };
 
+const getRandomImage = () => {
+    let imageTypes = ["computer", "tree", "waterfall", "boy", "girl", "fire", "love", "dog"],
+        randomIndex = Math.floor(Math.random() * imageTypes.length),
+        imageUrl = 'http://lorempixel.com/300/200/' + imageTypes[randomIndex];
+
+    return 'I dont know... but here you go, an image of {{imageCategory=' + imageTypes[randomIndex] + '}} {{imageUrl=' + imageUrl + '}}.';
+};
+
 export const getAnswer = (input, user) => {
     input = input.toLowerCase().replace("/?!.", "");
 
@@ -141,5 +149,10 @@ export const getAnswer = (input, user) => {
         return sentencer.make("I don't know anything about {{ noun }}.");
     }
 
-    return sentencer.make("Tell me about {{ noun }}");
+    if (Math.random() < 0.1) {
+        return getRandomImage();               
+    }
+    else {
+        return sentencer.make("Tell me about {{ noun }}");        
+    }
 };
