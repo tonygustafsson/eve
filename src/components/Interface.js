@@ -46,6 +46,7 @@ export default class Interface extends React.Component {
 
     clear() {
         this.props.clear();
+        this.input.focus();        
     }
 
     getHistory(e) {
