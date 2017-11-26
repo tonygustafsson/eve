@@ -59,10 +59,6 @@ export default class Interface extends React.Component {
     render() {
         return (
             <div className="interface">
-                <a href="http://www.tonyg.se/projects/sarabot/" title="Gå till startsidan">
-                    <img src="http://www.tonyg.se/projects/sarabot/assets/images/bot.jpg" className="bot-img" alt="Sarabot" />
-                </a>
-
                 <form className="dialog-form" onSubmit={e => { this.speak(e) }}>
                     <input type="text" ref={(input) => { this.input = input; }} className="input-field" value={this.state.currentPhrase} onKeyDown={e => { this.getHistory(e) }} onChange={e => { this.changePhrase(e.target.value); }} />
                     <button type="submit" className="btn-submit">Say</button>

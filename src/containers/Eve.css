@@ -17,9 +17,13 @@
 input[type=text] {
 	width: 400px;
 	height: 30px;
-	font-family: 'Lucida grande', Helvetica, sans-serif;
+	font-family: 'Aldrich', sans-serif;
 	font-size: 120%;
-	padding: 0 0.5em;
+	padding: .3em 1em;
+    background: rgba(255,255,255,.8);
+    border: 0;
+	border-radius: 4px;
+	outline: 0;
 }
 
 .greyed {
@@ -27,7 +31,9 @@ input[type=text] {
 }
 
 .dialog {
+	background-color: rgba(255,255,255,0.2);
 	margin-bottom: 5em;
+	padding: 1em 0;
 }
 
 .dialog img {
