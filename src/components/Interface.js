@@ -85,7 +85,7 @@ export default class Interface extends React.Component {
                                     <span>&#60;{said.time}&#62; {said.sentence}</span><br />
                                     
                                     { index === 0 && 
-                                        <span><span>&#60;{said.time}&#62;</span> <WrappyText className="wrappy-text" fps={30}>{answer}</WrappyText></span>                                  
+                                        <span>&#60;{said.time}&#62; <WrappyText className="wrappy-text" fps={30}>{answer}</WrappyText></span>                                  
                                     }
 
                                     { index !== 0 &&
