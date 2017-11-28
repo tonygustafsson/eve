@@ -36,6 +36,13 @@ input[type=text] {
 	padding: 1em 0;
 }
 
+.dialog .dialog-text {
+	font-family: 'Aldrich', sans-serif;
+	font-size: 120%;
+	text-align: left;
+	padding: .5em 20%;
+}
+
 .dialog .wrappy-text {
 	display: inline-block;
 }

@@ -78,8 +78,8 @@ export default class Interface extends React.Component {
                         answer = answer.replace(/{{imageCategory=(.*)}}/g, "$1");
 
                         return (
-                            <div key={index}>
-                                <p>
+                            <div className="dialog-text" key={index}>
+                                <div>
                                     <span>&#60;{said.time}&#62; {said.sentence}</span><br />
                                     
                                     { index === 0 && 
@@ -89,7 +89,7 @@ export default class Interface extends React.Component {
                                     { index !== 0 &&
                                         <span>&#60;{said.time}&#62; <span dangerouslySetInnerHTML={ { __html: answer } }></span></span>                                    
                                     }
-                                </p>
+                                </div>
                             </div>
                         );
                     })}

@@ -79,7 +79,7 @@ export const getAnswer = (input, user) => {
 
     if (isMathProblem) {
         let numbers = input.match(/\d+/g).map(Number),
-            mathType = input.match(/(\+|\-|\*|\/)/g)[0],
+            mathType = input.match(/(\+|-|\*|\/)/g)[0],
             answer = 0;
 
         switch (mathType) {
@@ -95,7 +95,7 @@ export const getAnswer = (input, user) => {
                 answer = numbers[0] * numbers[1];
                 break;
             }
-            case '/': {
+            default: {
                 answer = numbers[0] / numbers[1];
                 break;
             }
@@ -105,6 +105,7 @@ export const getAnswer = (input, user) => {
     }
 
     if (input.includes('my name is ')) {
+        debugger;
         return getRandomAnswer('hello', user);
     }
 
