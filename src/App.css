@@ -50,7 +50,7 @@ button {
 	padding: .3em 1em;
 	margin-left: .2em;
     background: rgba(255,255,255,.8);
-    border: 0;
+    border: 1px #dadada solid;
 	border-radius: 4px;
 	outline: 0;
 }
