@@ -1,5 +1,6 @@
 import React from 'react';
 import { getAnswer } from  '../Brain';
+import WrappyText from 'react-wrappy-text';
 
 export default class Interface extends React.Component {
     constructor(props) {
@@ -82,7 +83,14 @@ export default class Interface extends React.Component {
                             <div key={index}>
                                 <p>
                                     <span>&#60;{said.time}&#62; {said.sentence}</span><br />
-                                    <span>&#60;{said.time}&#62; <span dangerouslySetInnerHTML={ { __html: answer } }></span></span>
+                                    
+                                    { index === 0 && 
+                                        <span><span>&#60;{said.time}&#62;</span> <WrappyText className="wrappy-text" fps={30}>{answer}</WrappyText></span>                                  
+                                    }
+
+                                    { index !== 0 &&
+                                        <span>&#60;{said.time}&#62; <span dangerouslySetInnerHTML={ { __html: answer } }></span></span>                                    
+                                    }
                                 </p>
                             </div>
                         );
