@@ -6,7 +6,7 @@ import { InterfaceComponent } from './containers/Eve';
 const App = () => {
     return (
         <div className="app">
-            <h1>eve</h1>
+            <h1><a href="/">eve</a></h1>
 
             <InterfaceComponent />
 
