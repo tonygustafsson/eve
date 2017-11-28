@@ -8,6 +8,7 @@ export default class Interface extends React.Component {
 
         this.state = {
             currentPhrase: '',
+            loadTime: this.getCurrentTime(),
         };
     }
 
@@ -69,7 +70,7 @@ export default class Interface extends React.Component {
 
                 <div id="dialog" className="dialog">
                     { (typeof this.props.dialog === "undefined" || this.props.dialog.length < 1) &&
-                        <p>&#60;{this.getCurrentTime()}&#62; eve: Hi, what's your name?</p>                    
+                        <p>&#60;{this.state.loadTime}&#62; eve: Hi, what's your name?</p>                    
                     }
 
                     { typeof this.props.dialog !== "undefined" && this.props.dialog.map((said, index) => {
