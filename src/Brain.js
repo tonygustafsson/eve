@@ -50,6 +50,12 @@ const answers = {
         'You are, yes.',
         'Of course.',
     ],
+    how_are_you: [
+        'I\'m just so fine, thank you.',
+        'I\'m pretty fine, {{name}}',
+        'Awesome! How are you?',
+        'Well {{name}}, not that great actually...',
+    ],
 };
 
 const getRandomAnswer = (phrase, user, extraInfo) => {
@@ -142,6 +148,10 @@ export const getAnswer = (input, user) => {
 
     if (input.startsWith('am i')) {
         return getRandomAnswer('am_i', user);       
+    }
+
+    if (input.includes('how are you') || (input.includes('what') && input.includes('up')) || input.includes('zup')) {
+        return getRandomAnswer('how_are_you', user);
     }
 
     let sentencer = require('sentencer');
