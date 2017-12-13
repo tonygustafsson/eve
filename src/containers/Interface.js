@@ -42,9 +42,8 @@ class Interface extends React.Component {
         });
     }
 
-    clear() {
+    clear = () => {
         this.props.clear();
-        this.input.focus();        
     }
 
     getHistory = (e) => {
@@ -61,6 +60,7 @@ class Interface extends React.Component {
                 <SpeakForm
                     currentPhrase={this.state.currentPhrase}
                     speak={this.speak}
+                    clear={this.clear}
                     getHistory={this.getHistory}
                     changePhrase={(phrase) => this.changePhrase(phrase)}
                 />

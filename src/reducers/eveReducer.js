@@ -75,7 +75,6 @@ const reducer = (state = initState, action) => {
 
             return { ...state, dialog: dialog, saidLast: action.payload };
         case 'CLEAR':
-            debugger;
             return initState;
         default:
             return state;

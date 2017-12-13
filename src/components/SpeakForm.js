@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+let inputRef = null;
+
 const SpeakForm = (props) =>
     <form className="dialog-form" onSubmit={props.speak}>
         <input
             type="text"
+            ref={(input) => { inputRef = input; }}
             className="input-field"
             value={props.currentPhrase}
             onKeyDown={(e) => props.getHistory(e)}
@@ -13,7 +16,7 @@ const SpeakForm = (props) =>
         />
         
         <button type="submit" className="btn-submit">Say</button>
-        <button type="button" className="btn-clear" onClick={props.clear}>Clear</button>
+        <button type="button" className="btn-clear" onClick={() => {props.clear(); inputRef.focus(); }}>Clear</button>
     </form>
 
 SpeakForm.propTypes = {
