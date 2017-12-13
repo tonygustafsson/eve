@@ -34,9 +34,34 @@ const reducer = (state = initState, action) => {
             if (said.startsWith('my name is ') && said.split(' ').length > 3) {
                 let name = action.payload.split(' ')[3];
 
+                dialog.unshift({
+                    time: action.time,
+                    sentence: action.payload,
+                    answer: action.answer,
+                });
+
                 return {
                     ...state,
                     user: { ...state.user, name: name },
+                    dialog: dialog,
+                    saidLast: action.payload,
+                }
+            }
+
+            if ((said.includes('my') && said.includes('age')) || (said.includes('year') && said.includes('old'))) {
+                let age = said.match(/\d/g).join("");
+
+                dialog.unshift({
+                    time: action.time,
+                    sentence: action.payload,
+                    answer: action.answer,
+                });
+
+                return {
+                    ...state,
+                    user: { ...state.user, age: age },
+                    dialog: dialog,
+                    saidLast: action.payload,
                 }
             }
 

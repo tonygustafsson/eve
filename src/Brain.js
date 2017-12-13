@@ -56,6 +56,18 @@ const answers = {
         'Awesome! How are you?',
         'Well {{name}}, not that great actually...',
     ],
+    my_age_is: [
+        'OK, good to know {{name}}',
+        'OK, I see.',
+        'That young, huh?',
+        'OMG that\'s old :D',
+    ],
+    whats_my_age: [
+        'I remember ^^ {{age}}!',
+        '{{age}}.',
+        'I think you are {{age}}.',
+        'You are {{age}} years old, {{name}}.',
+    ],
 };
 
 const getRandomAnswer = (phrase, user, extraInfo) => {
@@ -64,6 +76,7 @@ const getRandomAnswer = (phrase, user, extraInfo) => {
         answer = availableAnswers[randomIndex];
 
     answer = answer.replace("{{name}}", user.name);
+    answer = answer.replace("{{age}}", user.age);
     answer = answer.replace("{{extraInfo}}", extraInfo);
         
     return answer;
@@ -111,12 +124,15 @@ export const getAnswer = (input, user) => {
     }
 
     if (input.includes('my name is ')) {
-        debugger;
         return getRandomAnswer('hello', user);
     }
 
     if (input.startsWith('hi') || input.startsWith('hello')) {
         return getRandomAnswer('hello', user);       
+    }
+
+    if ((input.includes('my') && input.includes('age')) || (input.includes('year') && input.includes('old'))) {
+        return getRandomAnswer('my_age_is', user);
     }
 
     if (input.includes('clock') || input.includes('time')) {
@@ -132,6 +148,10 @@ export const getAnswer = (input, user) => {
 
     if (input.includes('what') && input.includes('name')) {
         return getRandomAnswer('whats_my_name', user);
+    }
+
+    if ((input.includes('what') && input.includes('my') && input.includes('age')) || (input.includes('how') && input.includes('old'))) {
+        return getRandomAnswer('whats_my_age', user);
     }
 
     if (input.startsWith('omg') || input.startsWith('oh my god')) {
