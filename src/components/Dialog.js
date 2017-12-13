@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DialogItem from './Dialog-Item';
 
 const Dialog = (props) =>
@@ -8,16 +9,19 @@ const Dialog = (props) =>
         }
 
         { typeof props.dialog !== "undefined" && props.dialog.map((said, index) => {
-            let answer = said.answer.replace(/{{imageUrl=(.*)}}/g, "<br /><img src='$1' />");
-            answer = answer.replace(/{{imageCategory=(.*)}}/g, "$1");
-
             return <DialogItem
                         index={index}
                         time={said.time}
                         answer={said.answer}
                         sentence={said.sentence}
+                        key={index}
                     />;
         })}
     </div>
+
+Dialog.propTypes = {
+    loadTime: PropTypes.string,
+    dialog: PropTypes.array,
+};
 
 export default Dialog;

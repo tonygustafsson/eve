@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getAnswer } from  '../Brain';
 import SpeakForm from './SpeakForm';
 import Dialog from './Dialog';
 
-export default class Interface extends React.Component {
+class Interface extends React.Component {
     constructor(props) {
         super(props);
 
@@ -72,3 +73,9 @@ export default class Interface extends React.Component {
         );
     }
 }
+
+Interface.propTypes = {
+    dialog: PropTypes.array,
+};
+
+export default Interface;

@@ -1,5 +1,6 @@
 import React from 'react';
 import WrappyText from 'react-wrappy-text';
+import PropTypes from 'prop-types';
 
 const DialogItem = (props) =>
     <div className="dialog-text" key={props.index}>
@@ -15,5 +16,12 @@ const DialogItem = (props) =>
             }
         </div>
     </div>
+
+DialogItem.propTypes = {
+    index: PropTypes.number,
+    sentence: PropTypes.string,
+    answer: PropTypes.string,
+    time: PropTypes.string,
+};
 
 export default DialogItem;
