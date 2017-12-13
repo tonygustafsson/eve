@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { speak, clear } from '../actions';
-import Interface from '../components/Interface';
+import Interface from './Interface';
 import './Eve.css';
 
 const mapStateToProps = (state, ownProps) => {

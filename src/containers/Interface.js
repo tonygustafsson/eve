@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getAnswer } from  '../Brain';
-import SpeakForm from './SpeakForm';
-import Dialog from './Dialog';
+import SpeakForm from '../components/SpeakForm';
+import Dialog from '../components/Dialog';
 
 class Interface extends React.Component {
     constructor(props) {
