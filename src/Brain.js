@@ -174,6 +174,10 @@ export const getAnswer = (input, user) => {
         return getRandomAnswer('how_are_you', user);
     }
 
+    if (input.includes('tell') && input.includes('me') && input.includes('about')) {
+        return '';
+    }
+
     let sentencer = require('sentencer');
 
     if (isQuestion) {
