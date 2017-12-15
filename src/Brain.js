@@ -111,13 +111,13 @@ export const getAnswer = (input, user) => {
     let sentencer = require('sentencer');
 
     if (isQuestion) {
-        return sentencer.make("I don't know anything about {{ noun }}.");
+        return getRandomAnswer('fallback_question', user, sentencer.make("{{ a_noun }}"));        
     }
 
     if (Math.random() < 0.1) {
         return getRandomImage();               
     }
     else {
-        return sentencer.make("Tell me about {{ noun }}");        
+        return getRandomAnswer('fallback', user, sentencer.make("{{ a_noun }}"));        
     }
 };

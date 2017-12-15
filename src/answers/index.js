@@ -7,8 +7,9 @@ import { default as math } from './math';
 import { default as time } from './time';
 import { default as exclamations } from './exclamations';
 import { default as iAm } from './i-am';
-import { default as howAreYou } from './how-are-you';
+import { default as howAre } from './how-are';
 import { default as my } from './my';
+import { default as fallback } from './fallback';
 
 const answers = Object.assign({},
     hello,
@@ -20,8 +21,9 @@ const answers = Object.assign({},
     time,
     exclamations,
     iAm,
-    howAreYou,
+    howAre,
     my,
+    fallback,
 );
 
 export default answers;
