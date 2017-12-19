@@ -8,11 +8,17 @@ const DialogItem = (props) =>
             <span>&#60;{props.time}&#62; {props.sentence}</span><br />
             
             { props.index === 0 && 
-                <span>&#60;{props.time}&#62; <WrappyText className="wrappy-text" fps={30}>{props.answer}</WrappyText></span>                                  
+                <span>
+                    &#60;{props.time}&#62; <WrappyText className="wrappy-text" fps={30}>{props.answer.text}</WrappyText>
+                    <img alt="" src={props.answer.imageUrl} />
+                </span>
             }
 
             { props.index !== 0 &&
-                <span>&#60;{props.time}&#62; <span dangerouslySetInnerHTML={ { __html: props.answer } }></span></span>                                    
+                <span>
+                    &#60;{props.time}&#62; {props.answer.text}
+                    <img alt="" src={props.answer.imageUrl} />
+                </span>            
             }
         </div>
     </div>
@@ -20,7 +26,7 @@ const DialogItem = (props) =>
 DialogItem.propTypes = {
     index: PropTypes.number,
     sentence: PropTypes.string,
-    answer: PropTypes.string,
+    answer: PropTypes.object,
     time: PropTypes.string,
 };
 

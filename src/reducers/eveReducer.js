@@ -18,7 +18,7 @@ const reducer = (state = initState, action) => {
                 said = action.payload.toLowerCase();
 
             if (state.listeningFor === 'name') {
-                let answer = 'Nice to meet you, ' + action.payload;
+                let answer = { text: 'Nice to meet you, ' + action.payload };
 
                 dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': answer});
 
@@ -55,6 +55,7 @@ const reducer = (state = initState, action) => {
                     time: action.time,
                     sentence: action.payload,
                     answer: action.answer,
+                    imageUrl: '',
                 });
 
                 return {
@@ -69,7 +70,6 @@ const reducer = (state = initState, action) => {
                 //TODO: This does not work properly
 
                 var define = said.split(' ')[3],
-                    answer = null,
                     url = 'http://api.wordnik.com:80/v4/word.json/' + define + '/definitions?limit=1&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
         
                 fetch(url).then(response => {
@@ -81,6 +81,7 @@ const reducer = (state = initState, action) => {
                         time: action.time,
                         sentence: action.payload,
                         answer: response,
+                        imageUrl: '',
                     });
 
                     return {
@@ -95,6 +96,7 @@ const reducer = (state = initState, action) => {
                 time: action.time,
                 sentence: action.payload,
                 answer: action.answer,
+                imageUrl: '',
             });
 
             if (dialog.length > 10) dialog.pop();
