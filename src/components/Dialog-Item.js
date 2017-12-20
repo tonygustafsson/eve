@@ -9,7 +9,7 @@ const DialogItem = (props) =>
             
             { props.index === 0 && 
                 <span>
-                    &#60;{props.time}&#62; <WrappyText className="wrappy-text" fps={30}>{props.answer.text}</WrappyText>
+                    &#60;{props.time}&#62; <WrappyText className="wrappy-text" fps={60}>{props.answer.text}</WrappyText>
                     <img alt="" src={props.answer.imageUrl} />
                 </span>
             }
