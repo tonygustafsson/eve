@@ -17,7 +17,14 @@ export const rememberName = (name) => {
     return {
         type: 'REMEMBER_NAME',
         payload: name,
-    }
+    };
+};
+
+export const rememberAge = (age) => {
+    return {
+        type: 'REMEMBER_AGE',
+        payload: age,
+    };
 };
 
 export const clear = () => {

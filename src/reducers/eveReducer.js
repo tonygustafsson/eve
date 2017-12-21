@@ -31,24 +31,6 @@ const reducer = (state = initState, action) => {
                 };
             }
 
-            if ((said.includes('my') && said.includes('age')) || (said.includes('year') && said.includes('old'))) {
-                let age = said.match(/\d/g).join("");
-
-                dialog.unshift({
-                    time: action.time,
-                    sentence: action.payload,
-                    answer: action.answer,
-                    imageUrl: '',
-                });
-
-                return {
-                    ...state,
-                    user: { ...state.user, age: age },
-                    dialog: dialog,
-                    saidLast: action.payload,
-                }
-            }
-
             if (said.includes('tell') && said.includes('me') && said.includes('about')) {
                 //TODO: This does not work properly
 
@@ -87,6 +69,8 @@ const reducer = (state = initState, action) => {
             return { ...state, dialog: dialog, saidLast: action.payload };
         case 'REMEMBER_NAME':
             return { ...state, user: { ...state.user, name: action.payload } }
+        case 'REMEMBER_AGE':
+            return { ...state, user: { ...state.user, age: action.payload } }
         case 'CLEAR':
             return initState;
         default:

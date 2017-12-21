@@ -4,7 +4,7 @@ import { getAnswer } from  '../Brain';
 import SpeakForm from '../components/SpeakForm';
 import Dialog from '../components/Dialog';
 import { connect } from 'react-redux';
-import { speak, clear, rememberName } from '../actions';
+import { speak, clear, rememberName, rememberAge } from '../actions';
 import './Interface.css';
 
 class InterfaceComponent extends React.Component {
@@ -32,12 +32,18 @@ class InterfaceComponent extends React.Component {
         if (this.state.currentPhrase.length < 1) return;
 
         let said = this.state.currentPhrase,
+            saidLower = said.toLowerCase(),
             answer = getAnswer(this.state.currentPhrase, this.props.user),
             time = this.getCurrentTime();
 
-        if (said.toLowerCase().includes('my name is ') && said.toLowerCase().split(' ').length > 3) {
+        if (saidLower.toLowerCase().includes('my name is ') && saidLower.toLowerCase().split(' ').length > 3) {
             let name = said.split(' ')[3];
             this.props.rememberName(name);
+        }
+        
+        if ((saidLower.includes('my') && saidLower.includes('age') && saidLower.includes('is')) || (saidLower.includes('i ') && saidLower.includes('year') && said.includes('old'))) {
+            let age = saidLower.match(/\d/g).join("");
+            this.props.rememberAge(age);
         }
 
         this.props.speak(said, answer, time);        
@@ -98,6 +104,7 @@ export const InterfaceReduxConnector = connect(
         return {
         speak: (said, answer, time) => dispatch(speak(said, answer, time)),
         rememberName: (name) => dispatch(rememberName(name)),
+        rememberAge: (age) => dispatch(rememberAge(age)),
         clear: () => dispatch(clear()),
         };
     }
