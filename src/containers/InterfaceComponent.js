@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { getAnswer } from  '../Brain';
 import SpeakForm from '../components/SpeakForm';
 import Dialog from '../components/Dialog';
+import { connect } from 'react-redux';
+import { speak, clear } from '../actions';
+import './Interface.css';
 
-class Interface extends React.Component {
+class InterfaceComponent extends React.Component {
     constructor(props) {
         super(props);
 
@@ -74,8 +77,27 @@ class Interface extends React.Component {
     }
 }
 
-Interface.propTypes = {
+const mapStateToProps = (state, ownProps) => {
+    return {
+        dialog: state.eve.dialog,
+        loading: state.eve.loading,
+        currentTime: state.eve.currentTime,
+        user: state.eve.user,
+    };
+};
+  
+export const InterfaceReduxConnector = connect(
+    mapStateToProps,
+    (dispatch) => {
+        return {
+        speak: (said, answer, time) => dispatch(speak(said, answer, time)),
+        clear: () => dispatch(clear()),
+        };
+    }
+)(InterfaceComponent);
+
+InterfaceComponent.propTypes = {
     dialog: PropTypes.array,
 };
 
-export default Interface;
+export default InterfaceComponent;
