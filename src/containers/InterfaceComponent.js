@@ -54,8 +54,24 @@ class InterfaceComponent extends React.Component {
             this.props.rememberAge(age);
         }
 
-        this.props.speak(said, answer, time);        
+        if (saidLower.includes('tell') && saidLower.includes('me') && saidLower.includes('about')) {
+            //TODO: This does not work properly
 
+            var define = saidWords[3],
+                url = 'http://api.wordnik.com:80/v4/word.json/' + define + '/definitions?limit=1&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
+    
+            fetch(url).then(response => {
+                return response.json();
+            }).then(response => {
+                  return { text: response[0].text };
+            }).then(response => {
+                this.props.speak(said, response, time);    
+                this.setState({currentPhrase: ''});                
+                return;                
+            });
+        }
+
+        this.props.speak(said, answer, time);        
         this.setState({currentPhrase: ''});
     }
 
