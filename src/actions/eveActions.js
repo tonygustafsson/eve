@@ -13,6 +13,13 @@ export const speak = (said, answer, time) => {
     };
 };
 
+export const rememberName = (name) => {
+    return {
+        type: 'REMEMBER_NAME',
+        payload: name,
+    }
+};
+
 export const clear = () => {
     return {
         type: 'CLEAR',

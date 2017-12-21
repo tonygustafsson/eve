@@ -53,7 +53,7 @@ export const getAnswer = (input, user) => {
         return { text: getRandomAnswer('math', user, answer) };
     }
 
-    if (input.includes('my name is ')) {
+    if (input.includes('my name is ') && input.split(' ').length > 3) {
         return { text: getRandomAnswer('hello', user) };
     }
 
