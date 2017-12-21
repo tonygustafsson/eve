@@ -33,11 +33,19 @@ class InterfaceComponent extends React.Component {
 
         let said = this.state.currentPhrase,
             saidLower = said.toLowerCase(),
-            answer = getAnswer(this.state.currentPhrase, this.props.user),
+            saidWords = said.split(' '),
             time = this.getCurrentTime();
 
-        if (saidLower.toLowerCase().includes('my name is ') && saidLower.toLowerCase().split(' ').length > 3) {
-            let name = said.split(' ')[3];
+        if (this.props.listeningFor === "name") {
+            let name = said;
+            said = "my name is " + name;
+            this.props.rememberName(name);
+        }
+
+        let answer = getAnswer(said, this.props.user);
+
+        if (saidLower.includes('my name is ') && saidWords.length > 3) {
+            let name = saidWords[3];
             this.props.rememberName(name);
         }
         
@@ -95,6 +103,7 @@ const mapStateToProps = (state, ownProps) => {
         loading: state.eve.loading,
         currentTime: state.eve.currentTime,
         user: state.eve.user,
+        listeningFor: state.eve.listeningFor,
     };
 };
   
@@ -102,16 +111,23 @@ export const InterfaceReduxConnector = connect(
     mapStateToProps,
     (dispatch) => {
         return {
-        speak: (said, answer, time) => dispatch(speak(said, answer, time)),
-        rememberName: (name) => dispatch(rememberName(name)),
-        rememberAge: (age) => dispatch(rememberAge(age)),
-        clear: () => dispatch(clear()),
+            speak: (said, answer, time) => dispatch(speak(said, answer, time)),
+            rememberName: (name) => dispatch(rememberName(name)),
+            rememberAge: (age) => dispatch(rememberAge(age)),
+            clear: () => dispatch(clear()),
         };
     }
 )(InterfaceComponent);
 
 InterfaceComponent.propTypes = {
     dialog: PropTypes.array,
+    loading: PropTypes.bool,
+    currenTime: PropTypes.string,
+    user: PropTypes.object,
+    listeningFor: PropTypes.string,
+    speak: PropTypes.func,
+    rememberName: PropTypes.func,
+    clear: PropTypes.func,
 };
 
 export default InterfaceComponent;

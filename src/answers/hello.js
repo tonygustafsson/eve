@@ -1,8 +1,9 @@
 const answers = {
     hello: [
-        'Hi there {{name}}',
+        'Hi there!',
         'Hello :)',
         'Gday mate',
+        'Welcome to my place :)',
     ],
 };
 

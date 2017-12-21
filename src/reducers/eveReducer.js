@@ -17,20 +17,6 @@ const reducer = (state = initState, action) => {
             let dialog = state.dialog.slice(),
                 said = action.payload.toLowerCase();
 
-            if (state.listeningFor === 'name') {
-                let answer = { text: 'Nice to meet you, ' + action.payload };
-
-                dialog.unshift({'time': action.time, 'sentence': action.payload, 'answer': answer});
-
-                return {
-                    ...state,
-                    dialog: dialog,
-                    user: { name: action.payload },
-                    listeningFor: null,
-                    answer: answer,
-                };
-            }
-
             if (said.includes('tell') && said.includes('me') && said.includes('about')) {
                 //TODO: This does not work properly
 
@@ -68,7 +54,7 @@ const reducer = (state = initState, action) => {
 
             return { ...state, dialog: dialog, saidLast: action.payload };
         case 'REMEMBER_NAME':
-            return { ...state, user: { ...state.user, name: action.payload } }
+            return { ...state, user: { ...state.user, name: action.payload }, listeningFor: '' }
         case 'REMEMBER_AGE':
             return { ...state, user: { ...state.user, age: action.payload } }
         case 'CLEAR':
