@@ -1,5 +1,7 @@
 import answers from './answers';
 
+const sentencer = require('sentencer');
+
 const getRandomAnswer = (phrase, user, extraInfo) => {
     let availableAnswers = answers[phrase],
         randomIndex = Math.floor(Math.random() * availableAnswers.length),
@@ -8,6 +10,11 @@ const getRandomAnswer = (phrase, user, extraInfo) => {
     answer = answer.replace("{{name}}", user.name);
     answer = answer.replace("{{age}}", user.age);
     answer = answer.replace("{{extraInfo}}", extraInfo);
+
+    if (answer.includes('{{noun}}')) answer = answer.replace('{{noun}}', sentencer.make("{{ noun }}"));
+    if (answer.includes('{{a_noun}}')) answer = answer.replace('{{a_noun}}', sentencer.make("{{ a_noun }}"));
+    if (answer.includes('{{adjective}}')) answer = answer.replace('{{adjective}}', sentencer.make("{{ adjective }}"));
+    if (answer.includes('{{an_adjective}}')) answer = answer.replace('{{an_adjective}}', sentencer.make("{{ an_adjective }}"));
         
     return answer;
 };
@@ -104,11 +111,13 @@ export const getAnswer = (input, user) => {
         return { text: getRandomAnswer('how_are_you', user) };
     }
 
+    if (input.includes('what') && input.includes('are') && input.includes('you')) {
+        return { text: getRandomAnswer('what_are_you', user) };
+    }
+
     if (input.includes('tell') && input.includes('me') && input.includes('about')) {
         return { text: '' };
     }
-
-    let sentencer = require('sentencer');
 
     if (isQuestion) {
         return { text: getRandomAnswer('fallback_question', user, sentencer.make("{{ a_noun }}")) };        
