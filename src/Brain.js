@@ -88,6 +88,10 @@ export const getAnswer = (input, user) => {
     }
 
     if ((input.includes('what') && input.includes('my') && input.includes('age')) || (input.includes('how') && input.includes('old'))) {
+        if (user.age === null) {
+            return { text: 'Well, I don\'t know, how old are you?' };
+        }
+
         return { text: getRandomAnswer('whats_my_age', user) };
     }
 

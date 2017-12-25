@@ -49,7 +49,7 @@ class InterfaceComponent extends React.Component {
             this.props.rememberName(name);
         }
         
-        if ((saidLower.includes('my') && saidLower.includes('age') && saidLower.includes('is')) || (saidLower.includes('i ') && saidLower.includes('year') && said.includes('old'))) {
+        if ((saidLower.includes('my') && saidLower.includes('age') && saidLower.includes('is')) || (saidLower.includes('i') && saidLower.includes('year') && said.includes('old'))) {
             let age = saidLower.match(/\d/g).join("");
             this.props.rememberAge(age);
         }
