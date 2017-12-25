@@ -55,9 +55,7 @@ class InterfaceComponent extends React.Component {
         }
 
         if (saidLower.includes('tell') && saidLower.includes('me') && saidLower.includes('about')) {
-            //TODO: This does not work properly
-
-            var define = saidWords[3],
+            let define = saidWords[3],
                 url = 'http://api.wordnik.com:80/v4/word.json/' + define + '/definitions?limit=1&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
     
             fetch(url).then(response => {
@@ -66,9 +64,27 @@ class InterfaceComponent extends React.Component {
                   return { text: response[0].text };
             }).then(response => {
                 this.props.speak(said, response, time);    
-                this.setState({currentPhrase: ''});                
                 return;                
             });
+
+            this.setState({currentPhrase: ''});                
+            return;
+        }
+
+        if (saidLower.includes('where') && saidLower.includes('am') && saidLower.includes(' i')) {
+            let url = 'http://ipinfo.io/geo';
+    
+            fetch(url).then(response => {
+                return response.json();
+            }).then(response => {
+                return { text: response.city + ', ' + response.region };
+            }).then(response => {
+                this.props.speak(said, response, time);    
+                return;                
+            });
+
+            this.setState({currentPhrase: ''});
+            return;
         }
 
         this.props.speak(said, answer, time);        
