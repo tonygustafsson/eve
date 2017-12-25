@@ -10,6 +10,7 @@ import { default as iAm } from './i-am';
 import { default as howAre } from './how-are';
 import { default as my } from './my';
 import { default as what } from './what';
+import { default as thankYou } from './thank-you';
 import { default as fallback } from './fallback';
 
 const answers = Object.assign({},
@@ -25,6 +26,7 @@ const answers = Object.assign({},
     howAre,
     my,
     what,
+    thankYou,
     fallback,
 );
 

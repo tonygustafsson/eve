@@ -115,6 +115,10 @@ export const getAnswer = (input, user) => {
         return { text: getRandomAnswer('what_are_you', user) };
     }
 
+    if ((input.includes('thank') && input.includes('you')) || input.includes('thanks')) {
+        return { text: getRandomAnswer('thank_you', user) };
+    }
+
     if (isQuestion) {
         return { text: getRandomAnswer('fallback_question', user, sentencer.make("{{ a_noun }}")) };        
     }
