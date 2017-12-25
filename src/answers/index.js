@@ -11,6 +11,7 @@ import { default as howAre } from './how-are';
 import { default as my } from './my';
 import { default as what } from './what';
 import { default as thankYou } from './thank-you';
+import { default as yesAndNo } from './yes_and_no';
 import { default as fallback } from './fallback';
 
 const answers = Object.assign({},
@@ -27,6 +28,7 @@ const answers = Object.assign({},
     my,
     what,
     thankYou,
+    yesAndNo,
     fallback,
 );
 

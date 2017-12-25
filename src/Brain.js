@@ -118,6 +118,14 @@ export const getAnswer = (input, user) => {
     if (input.includes('what') && input.includes('are') && input.includes('you')) {
         return { text: getRandomAnswer('what_are_you', user) };
     }
+    
+    if (input.includes('yes') || input.includes('yep') || input.includes('correct')) {
+        return { text: getRandomAnswer('yes', user) };
+    }
+
+    if (input.includes('no') || input.includes('nope')) {
+        return { text: getRandomAnswer('no', user) };
+    }
 
     if ((input.includes('thank') && input.includes('you')) || input.includes('thanks')) {
         return { text: getRandomAnswer('thank_you', user) };
