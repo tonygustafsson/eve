@@ -60,13 +60,19 @@ class InterfaceComponent extends React.Component {
         }
 
         if (saidLower.includes('tell') && saidLower.includes('me') && saidLower.includes('about')) {
-            let define = saidWords[3],
+            var pluralize = require('pluralize');
+
+            let define = pluralize.singular(saidWords[3]),
                 url = 'http://api.wordnik.com:80/v4/word.json/' + define + '/definitions?limit=1&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
     
             fetch(url).then(response => {
                 return response.json();
             }).then(response => {
-                  return { text: response[0].text };
+                if (typeof response[0] === "undefined" || typeof response[0].text === "undefined") {
+                    return { text: "Hmm, I don't know anything about " + pluralize.plural(define) + ". Sorry :(" };
+                }
+
+                return { text: response[0].text };
             }).then(response => {
                 this.props.speak(said, response, time);    
                 return;                
