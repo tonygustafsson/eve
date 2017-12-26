@@ -1,5 +1,5 @@
 const answers = {
-    omg: [
+    exclamations: [
         'I know, right?',
         ':o!!',
         'It\'s weird, right?',

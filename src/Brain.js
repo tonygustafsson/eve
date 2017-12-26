@@ -3,6 +3,10 @@ import answers from './answers';
 const sentencer = require('sentencer');
 
 const getRandomAnswer = (phrase, user, extraInfo) => {
+    if (typeof answers[phrase] === "undefined") {
+        return "Answer does not exists.";
+    }
+
     let availableAnswers = answers[phrase],
         randomIndex = Math.floor(Math.random() * availableAnswers.length),
         answer = availableAnswers[randomIndex];
@@ -60,16 +64,39 @@ export const getAnswer = (input, user) => {
         return { text: getRandomAnswer('math', user, answer) };
     }
 
+    // NAME
+    if (input.includes('what') && input.includes('my') &&  input.includes('name')) {
+        return { text: getRandomAnswer('whats_my_name', user) };
+    }
+
+    if (input.includes('your') && input.includes('name')) {
+        return { text: getRandomAnswer('whats_your_name', user) };
+    }
+
     if (input.includes('my name is ') && input.split(' ').length > 3) {
         return { text: getRandomAnswer('hello', user) };
     }
 
-    if (input.startsWith('hi') || input.startsWith('hello')) {
-        return { text: getRandomAnswer('hello', user) };     
+    // AGE
+    if ((input.includes('what') && input.includes('my') && input.includes('age')) || (input.includes('how') && input.includes('old') && input.includes('i'))) {
+        if (user.age === null) {
+            return { text: 'Well, I don\'t know, how old are you?' };
+        }
+
+        return { text: getRandomAnswer('whats_my_age', user) };
+    }
+
+    if ((input.includes('how old') && input.includes('you')) || (input.includes('what') && input.includes('your') && input.includes('age'))) {
+        return { text: getRandomAnswer('whats_your_age', user) };
     }
 
     if ((input.includes('my') && input.includes('age')) || (input.includes('year') && input.includes('old'))) {
         return { text: getRandomAnswer('my_age_is', user) };
+    }
+
+    // GREETINGS
+    if (input.startsWith('hi') || input.startsWith('hello')) {
+        return { text: getRandomAnswer('hello', user) };     
     }
 
     if (input.includes('clock') || input.includes('time')) {
@@ -81,22 +108,6 @@ export const getAnswer = (input, user) => {
 
     if (input.startsWith('goodbye') || input.startsWith('bye')) {
         return { text: getRandomAnswer('goodbye', user) };
-    }
-
-    if (input.includes('what') && input.includes('name')) {
-        return { text: getRandomAnswer('whats_my_name', user) };
-    }
-
-    if ((input.includes('what') && input.includes('my') && input.includes('age')) || (input.includes('how') && input.includes('old'))) {
-        if (user.age === null) {
-            return { text: 'Well, I don\'t know, how old are you?' };
-        }
-
-        return { text: getRandomAnswer('whats_my_age', user) };
-    }
-
-    if (input.startsWith('omg') || input.startsWith('oh my god')) {
-        return { text: getRandomAnswer('omg', user) };
     }
 
     if (input.startsWith('your') || input.startsWith('your')) {
@@ -129,6 +140,10 @@ export const getAnswer = (input, user) => {
 
     if ((input.includes('thank') && input.includes('you')) || input.includes('thanks')) {
         return { text: getRandomAnswer('thank_you', user) };
+    }
+
+    if (input.startsWith('yeay') || input.startsWith('awesome') || input.startsWith(':D') || input.startsWith('omg') || input.startsWith('oh my god')) {
+        return { text: getRandomAnswer('exclamations', user) };
     }
 
     if (isQuestion) {

@@ -48,6 +48,11 @@ class InterfaceComponent extends React.Component {
             let name = saidWords[3];
             this.props.rememberName(name);
         }
+
+        if (saidLower.includes(' is my name') && saidWords.length > 3) {
+            let name = saidWords[0];
+            this.props.rememberName(name);
+        }
         
         if ((saidLower.includes('my') && saidLower.includes('age') && saidLower.includes('is')) || (saidLower.includes('i') && saidLower.includes('year') && said.includes('old'))) {
             let age = saidLower.match(/\d/g).join("");
