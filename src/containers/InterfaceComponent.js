@@ -98,6 +98,42 @@ class InterfaceComponent extends React.Component {
             return;
         }
 
+        if (saidLower.includes('tell') && saidLower.includes('me') && saidLower.includes('weather')) {
+            let locationUrl = 'http://ipinfo.io/geo';
+    
+            fetch(locationUrl).then(response => {
+                return response.json();
+            }).then(response => {
+                return encodeURI(response.city + ', ' + response.region);
+            }).then(response => {
+                let weatherUrl = 'https://query.yahooapis.com/v1/public/yql?q=select%20location%2C%20wind%2C%20astronomy%2C%20atmosphere%2C%20item.condition%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' + response + '%22)&u=c&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';                                    
+
+                fetch(weatherUrl).then(weatherResponse => {
+                    return weatherResponse.json();
+                }).then(weatherResponse => {
+                    function fahrenheitToCelcius (temp) {
+                        return Math.round((5/9) * (temp - 32), 0);
+                    }
+
+                    let channel = weatherResponse.query.results.channel,
+                        city = channel.location.city,
+                        windSpeed = channel.wind.speed,
+                        humidity = channel.atmosphere.humidity,
+                        sunrise = channel.astronomy.sunrise,
+                        sunset = channel.astronomy.sunset,
+                        temp = fahrenheitToCelcius(channel.item.condition.temp),
+                        description = channel.item.condition.text.toLowerCase(),
+                        response = { text: 'It seems to be ' + description + ' and ' + temp + ' degrees celcius in ' + city + '.' };
+
+                    this.props.speak(said, response, time);    
+                    return;
+                });
+            });
+
+            this.setState({currentPhrase: ''});
+            return;
+        }
+
         this.props.speak(said, answer, time);        
         this.setState({currentPhrase: ''});
     }
