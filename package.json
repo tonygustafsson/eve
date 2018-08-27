@@ -1,24 +1,25 @@
 {
-  "name": "eve",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "pluralize": "^7.0.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.5",
-    "react-scripts": "1.0.17",
-    "react-wrappy-text": "^1.1.1",
-    "redux": "^3.7.2",
-    "redux-localstorage": "^0.4.1",
-    "redux-thunk": "^2.2.0",
-    "sentencer": "^0.1.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "name": "eve",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "http://www.tonyg.se/projects/eve/",
+    "dependencies": {
+        "pluralize": "^7.0.0",
+        "prop-types": "^15.6.2",
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2",
+        "react-redux": "^5.0.7",
+        "react-scripts": "1.1.5",
+        "react-wrappy-text": "^1.1.1",
+        "redux": "^4.0.0",
+        "redux-localstorage": "^0.4.1",
+        "redux-thunk": "^2.3.0",
+        "sentencer": "^0.1.5"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    }
 }
