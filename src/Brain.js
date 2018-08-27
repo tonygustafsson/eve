@@ -3,28 +3,41 @@ import answers from './answers';
 const sentencer = require('sentencer');
 
 const getRandomAnswer = (phrase, user, extraInfo) => {
-    if (typeof answers[phrase] === "undefined") {
-        return "Answer does not exists.";
+    if (typeof answers[phrase] === 'undefined') {
+        return 'Answer does not exists.';
     }
 
     let availableAnswers = answers[phrase],
         randomIndex = Math.floor(Math.random() * availableAnswers.length),
         answer = availableAnswers[randomIndex];
 
-    answer = answer.replace("{{name}}", user.name);
-    answer = answer.replace("{{age}}", user.age);
-    answer = answer.replace("{{extraInfo}}", extraInfo);
+    answer = answer.replace('{{name}}', user.name);
+    answer = answer.replace('{{age}}', user.age);
+    answer = answer.replace('{{extraInfo}}', extraInfo);
 
-    if (answer.includes('{{noun}}')) answer = answer.replace('{{noun}}', sentencer.make("{{ noun }}"));
-    if (answer.includes('{{a_noun}}')) answer = answer.replace('{{a_noun}}', sentencer.make("{{ a_noun }}"));
-    if (answer.includes('{{adjective}}')) answer = answer.replace('{{adjective}}', sentencer.make("{{ adjective }}"));
-    if (answer.includes('{{an_adjective}}')) answer = answer.replace('{{an_adjective}}', sentencer.make("{{ an_adjective }}"));
-        
+    if (answer.includes('{{noun}}')) answer = answer.replace('{{noun}}', sentencer.make('{{ noun }}'));
+    if (answer.includes('{{a_noun}}')) answer = answer.replace('{{a_noun}}', sentencer.make('{{ a_noun }}'));
+    if (answer.includes('{{adjective}}')) answer = answer.replace('{{adjective}}', sentencer.make('{{ adjective }}'));
+    if (answer.includes('{{an_adjective}}'))
+        answer = answer.replace('{{an_adjective}}', sentencer.make('{{ an_adjective }}'));
+
     return answer;
 };
 
 const getRandomImage = () => {
-    let imageTypes = ["city", "people", "transport", "animals", "food", "nature", "business", "nightlife", "cats", "fashion", "technics"],
+    let imageTypes = [
+            'city',
+            'people',
+            'transport',
+            'animals',
+            'food',
+            'nature',
+            'business',
+            'nightlife',
+            'cats',
+            'fashion',
+            'technics'
+        ],
         randomIndex = Math.floor(Math.random() * imageTypes.length),
         imageUrl = 'http://lorempixel.com/300/200/' + imageTypes[randomIndex] + '/1';
 
@@ -32,7 +45,7 @@ const getRandomImage = () => {
 };
 
 export const getAnswer = (input, user) => {
-    input = input.toLowerCase().replace("/?!.", "");
+    input = input.toLowerCase().replace('/?!.', '');
 
     let isQuestion = input.includes('?'),
         isMathProblem = new RegExp('\\d+\\ ?(\\+|\\-|\\*|\\/) ?\\d+').test(input);
@@ -65,7 +78,7 @@ export const getAnswer = (input, user) => {
     }
 
     // NAME
-    if (input.includes('what') && input.includes('my') &&  input.includes('name')) {
+    if (input.includes('what') && input.includes('my') && input.includes('name')) {
         return { text: getRandomAnswer('whats_my_name', user) };
     }
 
@@ -78,15 +91,21 @@ export const getAnswer = (input, user) => {
     }
 
     // AGE
-    if ((input.includes('what') && input.includes('my') && input.includes('age')) || (input.includes('how') && input.includes('old') && input.includes('i'))) {
+    if (
+        (input.includes('what') && input.includes('my') && input.includes('age')) ||
+        (input.includes('how') && input.includes('old') && input.includes('i'))
+    ) {
         if (user.age === null) {
-            return { text: 'Well, I don\'t know, how old are you?' };
+            return { text: "Well, I don't know, how old are you?" };
         }
 
         return { text: getRandomAnswer('whats_my_age', user) };
     }
 
-    if ((input.includes('how old') && input.includes('you')) || (input.includes('what') && input.includes('your') && input.includes('age'))) {
+    if (
+        (input.includes('how old') && input.includes('you')) ||
+        (input.includes('what') && input.includes('your') && input.includes('age'))
+    ) {
         return { text: getRandomAnswer('whats_your_age', user) };
     }
 
@@ -96,14 +115,14 @@ export const getAnswer = (input, user) => {
 
     // GREETINGS
     if (input.startsWith('hi') || input.startsWith('hello')) {
-        return { text: getRandomAnswer('hello', user) };     
+        return { text: getRandomAnswer('hello', user) };
     }
 
     if (input.includes('clock') || input.includes('time')) {
         let date = new Date(),
             extraInfo = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 
-        return { text: getRandomAnswer('time', user, extraInfo) };   
+        return { text: getRandomAnswer('time', user, extraInfo) };
     }
 
     if (input.startsWith('goodbye') || input.startsWith('bye')) {
@@ -114,7 +133,7 @@ export const getAnswer = (input, user) => {
         return { text: getRandomAnswer('your', user) };
     }
 
-    if (input.startsWith('you are') || input.startsWith('you\'re')) {
+    if (input.startsWith('you are') || input.startsWith("you're")) {
         return { text: getRandomAnswer('you_are', user) };
     }
 
@@ -129,7 +148,7 @@ export const getAnswer = (input, user) => {
     if (input.includes('what') && input.includes('are') && input.includes('you')) {
         return { text: getRandomAnswer('what_are_you', user) };
     }
-    
+
     if (input.includes('yes') || input.includes('yep') || input.includes('correct')) {
         return { text: getRandomAnswer('yes', user) };
     }
@@ -142,18 +161,24 @@ export const getAnswer = (input, user) => {
         return { text: getRandomAnswer('thank_you', user) };
     }
 
-    if (input.startsWith('yeay') || input.startsWith('awesome') || input.startsWith(':D') || input.startsWith('omg') || input.startsWith('oh my god')) {
+    if (
+        input.startsWith('yeay') ||
+        input.startsWith('awesome') ||
+        input.startsWith(':D') ||
+        input.startsWith('omg') ||
+        input.startsWith('oh my god')
+    ) {
         return { text: getRandomAnswer('exclamations', user) };
     }
 
     if (isQuestion) {
-        return { text: getRandomAnswer('fallback_question', user, sentencer.make("{{ a_noun }}")) };        
+        return { text: getRandomAnswer('fallback_question', user, sentencer.make('{{ a_noun }}')) };
     }
 
     if (Math.random() < 0.1) {
         let randomImage = getRandomImage();
-        return { text: randomImage.text, imageUrl: randomImage.imageUrl };               
+        return { text: randomImage.text, imageUrl: randomImage.imageUrl };
     }
 
-    return { text: getRandomAnswer('fallback', user, sentencer.make("{{ a_noun }}")) };
+    return { text: getRandomAnswer('fallback', user, sentencer.make('{{ a_noun }}')) };
 };
