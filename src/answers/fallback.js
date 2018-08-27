@@ -10,6 +10,12 @@ const answers = {
         'I have no idea, dude.',
         'No idea. But tell me about {{extraInfo}}!',
         "I think it's like {{extraInfo}}..."
+    ],
+    fallback_with_image: [
+        'I know, haha. Here is an image of ',
+        'No idea... look at this ',
+        'If you say so. Please have a ',
+        'I think you can use some '
     ]
 };
 

@@ -24,26 +24,6 @@ const getRandomAnswer = (phrase, user, extraInfo) => {
     return answer;
 };
 
-const getRandomImage = () => {
-    let imageTypes = [
-            'city',
-            'people',
-            'transport',
-            'animals',
-            'food',
-            'nature',
-            'business',
-            'nightlife',
-            'cats',
-            'fashion',
-            'technics'
-        ],
-        randomIndex = Math.floor(Math.random() * imageTypes.length),
-        imageUrl = 'http://lorempixel.com/300/200/' + imageTypes[randomIndex] + '/1';
-
-    return { text: 'Here, an image of ' + imageTypes[randomIndex] + '...', imageUrl: imageUrl };
-};
-
 export const getAnswer = (input, user) => {
     input = input.toLowerCase().replace('/?!.', '');
 
@@ -174,6 +154,20 @@ export const getAnswer = (input, user) => {
     if (isQuestion) {
         return { text: getRandomAnswer('fallback_question', user, sentencer.make('{{ a_noun }}')) };
     }
+
+    const getRandomImage = () => {
+        let imageTypes = ['animals', 'architecture', 'nature', 'people', 'tech'],
+            randomIndex = Math.floor(Math.random() * imageTypes.length),
+            imageUrl = 'https://placeimg.com/300/200/' + imageTypes[randomIndex] + '/' + Math.random();
+
+        return {
+            text:
+                getRandomAnswer('fallback_with_image', user, sentencer.make('{{ a_noun }}')) +
+                imageTypes[randomIndex] +
+                '.',
+            imageUrl: imageUrl
+        };
+    };
 
     if (Math.random() < 0.1) {
         let randomImage = getRandomImage();
