@@ -8,16 +8,20 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import persistState from 'redux-localstorage';
 
-const myCompose = process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? compose(applyMiddleware(), persistState(), window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__())
-    : compose(applyMiddleware(), persistState());
+const myCompose =
+    process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+        ? compose(
+              applyMiddleware(),
+              persistState(),
+              window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+          )
+        : compose(
+              applyMiddleware(),
+              persistState()
+          );
 
-const store = createStore(
-    reducers,
-    {},
-    myCompose
-);
-    
+const store = createStore(reducers, {}, myCompose);
+
 ReactDOM.render(
     <Provider store={store}>
         <App store={store} />

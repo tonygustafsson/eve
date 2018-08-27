@@ -14,7 +14,8 @@ import { default as thankYou } from './thank-you';
 import { default as yesAndNo } from './yes_and_no';
 import { default as fallback } from './fallback';
 
-const answers = Object.assign({},
+const answers = Object.assign(
+    {},
     hello,
     goodbye,
     whatIs,
@@ -29,7 +30,7 @@ const answers = Object.assign({},
     what,
     thankYou,
     yesAndNo,
-    fallback,
+    fallback
 );
 
 export default answers;
