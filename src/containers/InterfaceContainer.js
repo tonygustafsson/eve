@@ -208,17 +208,14 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export const InterfaceReduxConnector = connect(
-    mapStateToProps,
-    dispatch => {
-        return {
-            speak: (said, answer, time) => dispatch(speak(said, answer, time)),
-            rememberName: name => dispatch(rememberName(name)),
-            rememberAge: age => dispatch(rememberAge(age)),
-            clear: () => dispatch(clear())
-        };
-    }
-)(InterfaceContainer);
+export const InterfaceReduxConnector = connect(mapStateToProps, dispatch => {
+    return {
+        speak: (said, answer, time) => dispatch(speak(said, answer, time)),
+        rememberName: name => dispatch(rememberName(name)),
+        rememberAge: age => dispatch(rememberAge(age)),
+        clear: () => dispatch(clear())
+    };
+})(InterfaceContainer);
 
 InterfaceContainer.propTypes = {
     dialog: PropTypes.array,

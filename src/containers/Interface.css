@@ -1,68 +1,68 @@
 .bot-img {
-	transition: opacity 150ms;
+    transition: opacity 150ms;
 }
 
 .bot-img.thinking {
-	opacity: .9;
+    opacity: 0.9;
 }
 
 .dialog-form {
-	display: block;
-	padding: 1em 0;
-	width: 100%;
-	float: left;
-	clear: both;
+    display: block;
+    padding: 1em 0;
+    width: 100%;
+    float: left;
+    clear: both;
 }
 
-input[type=text] {
-	width: 400px;
-	height: 30px;
-	font-family: 'Aldrich', sans-serif;
-	font-size: 120%;
-	padding: .3em 1em;
-    background: rgba(255,255,255,.8);
+input[type='text'] {
+    width: 400px;
+    height: 30px;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 120%;
+    padding: 0.3em 1em;
+    background: rgba(255, 255, 255, 0.8);
     border: 1px #dadada solid;
-	border-radius: 4px;
-	outline: 0;
+    border-radius: 4px;
+    outline: 0;
 }
 
 .greyed {
-	color: #888;
+    color: #888;
 }
 
 .dialog {
-	background-color: rgba(255,255,255,0.2);
-	margin-bottom: 5em;
-	padding: 1em 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 5em;
+    padding: 1em 0;
 }
 
 .dialog .dialog-text {
-	font-family: 'Aldrich', sans-serif;
-	font-size: 120%;
-	text-align: left;
-	padding: 0 20%;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 120%;
+    text-align: left;
+    padding: 0 20%;
 }
 
 .dialog .dialog-text img {
-	display: block;
+    display: block;
 }
 
 .dialog .wrappy-text {
-	display: inline-block;
+    display: inline-block;
 }
 
 .dialog img {
-	padding: .5em;
-	max-width: 100%;	
+    padding: 0.5em;
+    max-width: 100%;
 }
 
 .fork-me img {
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
 }
 
 .wrappy-text {
-	display: inline !important;
+    display: inline !important;
 }

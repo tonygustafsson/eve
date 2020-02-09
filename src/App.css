@@ -1,113 +1,113 @@
 @import url('https://fonts.googleapis.com/css?family=Aldrich');
 
 body {
-	background: #fefef6 url('meadow.jpg') no-repeat center center fixed;
+    background: #fefef6 url('meadow.jpg') no-repeat center center fixed;
     background-size: cover;
-	line-height: 130%;
-	text-align: center;
-	font-family: 'Aldrich', sans-serif;
-	font-display: swap;
+    line-height: 130%;
+    text-align: center;
+    font-family: 'Aldrich', sans-serif;
+    font-display: swap;
 }
 
 img {
-	border: none;
+    border: none;
 }
 
 #main {
-	width: 80%;
-	margin: 0 10%;
-	text-align: center;
+    width: 80%;
+    margin: 0 10%;
+    text-align: center;
 }
 
 h1 {
-	text-align: center;
-	letter-spacing: 6px;
-	font-size: 200%;
-	padding: .5em 0;
+    text-align: center;
+    letter-spacing: 6px;
+    font-size: 200%;
+    padding: 0.5em 0;
 }
 
 h1 a {
-	display: block;
-	padding: 1em 0;
-	font-size: 200%;
-	text-decoration: none;
-	color: #000;
-	font-family: 'Aldrich', sans-serif;
+    display: block;
+    padding: 1em 0;
+    font-size: 200%;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Aldrich', sans-serif;
 }
 
 p {
-	font-family: 'Aldrich', sans-serif;
-	font-size: 120%;
-	text-align: left;
-	padding: 0 20%;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 120%;
+    text-align: left;
+    padding: 0 20%;
 }
 
 button {
-	width: 100px;
-	height: 38px;
-	font-family: 'Aldrich', sans-serif;
-	font-size: 120%;
-	cursor: pointer;
-	padding: .3em 1em;
-	margin-left: .2em;
-    background: rgba(255,255,255,.8);
+    width: 100px;
+    height: 38px;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 120%;
+    cursor: pointer;
+    padding: 0.3em 1em;
+    margin-left: 0.2em;
+    background: rgba(255, 255, 255, 0.8);
     border: 1px #dadada solid;
-	border-radius: 4px;
-	outline: 0;
+    border-radius: 4px;
+    outline: 0;
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	background: #eee;
-	border-top: 1px #aaa solid;
-	opacity: 0.8;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #eee;
+    border-top: 1px #aaa solid;
+    opacity: 0.8;
 }
 
 footer p {
-	text-align: right;
-	padding: 0;
-	font-size: 80%;
+    text-align: right;
+    padding: 0;
+    font-size: 80%;
 }
 
 footer p a {
-	color: black;
-	letter-spacing: 2px;
-	text-decoration: none;
-	margin-right: 1.5em;
+    color: black;
+    letter-spacing: 2px;
+    text-decoration: none;
+    margin-right: 1.5em;
 }
 
 @media screen and (max-width: 960px) {
-	#main {
-		width: 100%;
-		margin: 0;
-	}
-	
-	.bot-img {
-		max-width: 100%;
-	}
-	
-	.fork-me img {
-		display: none;
-	}
-	
-	input[type=text] {
-		width: 100%;
-		box-sizing: border-box;
-		margin-bottom: .5em;
-	}
-	
-	h1 a {
-		padding-top: .5em;
-	}
-	
-	p {
-		padding: 0;
-	}
-	
-	footer {
-		display: none;
-	}
+    #main {
+        width: 100%;
+        margin: 0;
+    }
+
+    .bot-img {
+        max-width: 100%;
+    }
+
+    .fork-me img {
+        display: none;
+    }
+
+    input[type='text'] {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 0.5em;
+    }
+
+    h1 a {
+        padding-top: 0.5em;
+    }
+
+    p {
+        padding: 0;
+    }
+
+    footer {
+        display: none;
+    }
 }
