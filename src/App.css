@@ -7,6 +7,7 @@ body {
     text-align: center;
     font-family: 'Aldrich', sans-serif;
     font-display: swap;
+    margin: 0;
 }
 
 img {
@@ -44,7 +45,7 @@ p {
 
 button {
     width: 100px;
-    height: 38px;
+    height: 43px;
     font-family: 'Aldrich', sans-serif;
     font-size: 120%;
     cursor: pointer;
@@ -52,8 +53,12 @@ button {
     margin-left: 0.2em;
     background: rgba(255, 255, 255, 0.8);
     border: 1px #dadada solid;
-    border-radius: 4px;
     outline: 0;
+    vertical-align: middle;
+}
+
+button > span {
+    vertical-align: sub;
 }
 
 footer {
@@ -95,8 +100,14 @@ footer p a {
 
     input[type='text'] {
         width: 100%;
+        max-width: 95%;
+        height: 2em;
         box-sizing: border-box;
         margin-bottom: 0.5em;
+    }
+
+    .dialog .dialog-text {
+        padding: 0 5% !important;
     }
 
     h1 a {

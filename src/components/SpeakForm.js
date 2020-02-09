@@ -20,7 +20,7 @@ const SpeakForm = props => (
         />
 
         <button type="submit" className="btn-submit">
-            Say
+            <span>Say</span>
         </button>
         <button
             type="button"
@@ -30,7 +30,7 @@ const SpeakForm = props => (
                 inputRef.focus();
             }}
         >
-            Clear
+            <span>Clear</span>
         </button>
     </form>
 );
