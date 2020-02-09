@@ -7,7 +7,7 @@ const App = () => {
     return (
         <div className="app">
             <h1>
-                <a href="/">eve</a>
+                <a href="index.html">eve</a>
             </h1>
 
             <InterfaceReduxConnector />
