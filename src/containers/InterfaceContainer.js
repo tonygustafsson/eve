@@ -13,7 +13,7 @@ class InterfaceContainer extends React.Component {
 
         this.state = {
             currentPhrase: '',
-            loadTime: this.getCurrentTime()
+            loadTime: this.getCurrentTime(),
         };
     }
 
@@ -26,7 +26,7 @@ class InterfaceContainer extends React.Component {
         return hours + ':' + minutes + ':' + seconds;
     }
 
-    speak = e => {
+    speak = (e) => {
         e.preventDefault();
 
         if (this.state.currentPhrase.length < 1) return;
@@ -72,17 +72,17 @@ class InterfaceContainer extends React.Component {
                     '/definitions?limit=1&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
 
             fetch(url)
-                .then(response => {
+                .then((response) => {
                     return response.json();
                 })
-                .then(response => {
+                .then((response) => {
                     if (typeof response[0] === 'undefined' || typeof response[0].text === 'undefined') {
                         return { text: "Hmm, I don't know anything about " + pluralize.plural(define) + '. Sorry :(' };
                     }
 
                     return { text: response[0].text };
                 })
-                .then(response => {
+                .then((response) => {
                     this.props.speak(said, response, time);
                     return;
                 });
@@ -95,13 +95,13 @@ class InterfaceContainer extends React.Component {
             let url = 'http://ipinfo.io/geo';
 
             fetch(url)
-                .then(response => {
+                .then((response) => {
                     return response.json();
                 })
-                .then(response => {
+                .then((response) => {
                     return { text: response.city + ', ' + response.region };
                 })
-                .then(response => {
+                .then((response) => {
                     this.props.speak(said, response, time);
                     return;
                 });
@@ -114,23 +114,23 @@ class InterfaceContainer extends React.Component {
             let locationUrl = 'http://ipinfo.io/geo';
 
             fetch(locationUrl)
-                .then(response => {
+                .then((response) => {
                     return response.json();
                 })
-                .then(response => {
+                .then((response) => {
                     return encodeURI(response.city + ', ' + response.region);
                 })
-                .then(response => {
+                .then((response) => {
                     let weatherUrl =
                         'https://query.yahooapis.com/v1/public/yql?q=select%20location%2C%20wind%2C%20astronomy%2C%20atmosphere%2C%20item.condition%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22' +
                         response +
                         '%22)&u=c&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
 
                     fetch(weatherUrl)
-                        .then(weatherResponse => {
+                        .then((weatherResponse) => {
                             return weatherResponse.json();
                         })
-                        .then(weatherResponse => {
+                        .then((weatherResponse) => {
                             function fahrenheitToCelcius(temp) {
                                 return Math.round((5 / 9) * (temp - 32), 0);
                             }
@@ -147,7 +147,7 @@ class InterfaceContainer extends React.Component {
                                         temp +
                                         ' degrees celcius in ' +
                                         city +
-                                        '.'
+                                        '.',
                                 };
 
                             this.props.speak(said, response, time);
@@ -165,7 +165,7 @@ class InterfaceContainer extends React.Component {
 
     changePhrase(phrase) {
         this.setState({
-            currentPhrase: phrase
+            currentPhrase: phrase,
         });
     }
 
@@ -173,7 +173,7 @@ class InterfaceContainer extends React.Component {
         this.props.clear();
     };
 
-    getHistory = e => {
+    getHistory = (e) => {
         if (e.nativeEvent.key !== 'ArrowUp') return;
 
         var lastSaid = this.props.dialog[0].sentence;
@@ -189,7 +189,7 @@ class InterfaceContainer extends React.Component {
                     speak={this.speak}
                     clear={this.clear}
                     getHistory={this.getHistory}
-                    changePhrase={phrase => this.changePhrase(phrase)}
+                    changePhrase={(phrase) => this.changePhrase(phrase)}
                 />
 
                 <Dialog dialog={this.props.dialog} loadTime={this.state.loadTime} />
@@ -204,16 +204,16 @@ const mapStateToProps = (state, ownProps) => {
         loading: state.eve.loading,
         currentTime: state.eve.currentTime,
         user: state.eve.user,
-        listeningFor: state.eve.listeningFor
+        listeningFor: state.eve.listeningFor,
     };
 };
 
-export const InterfaceReduxConnector = connect(mapStateToProps, dispatch => {
+export const InterfaceReduxConnector = connect(mapStateToProps, (dispatch) => {
     return {
         speak: (said, answer, time) => dispatch(speak(said, answer, time)),
-        rememberName: name => dispatch(rememberName(name)),
-        rememberAge: age => dispatch(rememberAge(age)),
-        clear: () => dispatch(clear())
+        rememberName: (name) => dispatch(rememberName(name)),
+        rememberAge: (age) => dispatch(rememberAge(age)),
+        clear: () => dispatch(clear()),
     };
 })(InterfaceContainer);
 
@@ -225,7 +225,7 @@ InterfaceContainer.propTypes = {
     listeningFor: PropTypes.string,
     speak: PropTypes.func,
     rememberName: PropTypes.func,
-    clear: PropTypes.func
+    clear: PropTypes.func,
 };
 
 export default InterfaceContainer;

@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 
 let inputRef = null;
 
-const SpeakForm = props => (
+const SpeakForm = (props) => (
     <form className="dialog-form" onSubmit={props.speak}>
         <input
             type="text"
-            ref={input => {
+            ref={(input) => {
                 inputRef = input;
             }}
             className="input-field"
             value={props.currentPhrase}
-            onKeyDown={e => props.getHistory(e)}
-            onChange={e => {
+            onKeyDown={(e) => props.getHistory(e)}
+            onChange={(e) => {
                 props.changePhrase(e.target.value);
             }}
-            autoFocus="true"
+            autoFocus
         />
 
         <button type="submit" className="btn-submit">
@@ -40,7 +40,7 @@ SpeakForm.propTypes = {
     getHistory: PropTypes.func,
     changePhrase: PropTypes.func,
     speak: PropTypes.func,
-    clear: PropTypes.func
+    clear: PropTypes.func,
 };
 
 export default SpeakForm;

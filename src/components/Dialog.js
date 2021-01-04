@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DialogItem from './Dialog-Item';
 
-const Dialog = props => (
+const Dialog = (props) => (
     <div id="dialog" className="dialog">
         {(typeof props.dialog === 'undefined' || props.dialog.length < 1) && (
             <p>
@@ -29,7 +29,7 @@ const Dialog = props => (
 
 Dialog.propTypes = {
     loadTime: PropTypes.string,
-    dialog: PropTypes.array
+    dialog: PropTypes.array,
 };
 
 export default Dialog;

@@ -5,8 +5,8 @@ const initState = {
     listeningFor: 'name',
     user: {
         name: null,
-        age: null
-    }
+        age: null,
+    },
 };
 
 const reducer = (state = initState, action) => {
@@ -20,7 +20,7 @@ const reducer = (state = initState, action) => {
                 time: action.time,
                 sentence: action.payload,
                 answer: action.answer,
-                imageUrl: ''
+                imageUrl: '',
             });
 
             if (dialog.length > 10) dialog.pop();

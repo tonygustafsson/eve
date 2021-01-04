@@ -165,7 +165,7 @@ export const getAnswer = (input, user) => {
                 getRandomAnswer('fallback_with_image', user, sentencer.make('{{ a_noun }}')) +
                 imageTypes[randomIndex] +
                 '.',
-            imageUrl: imageUrl
+            imageUrl: imageUrl,
         };
     };
 
