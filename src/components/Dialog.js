@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DialogItem from './Dialog-Item';
+import DialogItem from './DialogItem';
 
 const Dialog = (props) => (
     <div id="dialog" className="dialog">
