@@ -1,7 +1,6 @@
 {
     "name": "eve",
     "version": "0.1.0",
-    "private": true,
     "homepage": "http://www.tonyg.se/projects/eve/",
     "dependencies": {
         "pluralize": "^8.0.0",
