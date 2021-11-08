@@ -1,7 +1,7 @@
 {
     "name": "eve",
     "version": "0.1.0",
-    "homepage": "http://www.tonyg.se/projects/eve/",
+    "homepage": "https://eve-robot.vercel.app/",
     "dependencies": {
         "pluralize": "^8.0.0",
         "prop-types": "^15.7.2",
